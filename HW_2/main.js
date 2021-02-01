@@ -42,8 +42,15 @@ switch (a) {
   case 13: console.log("13");
   case 14: console.log("14");
   case 15: console.log("15");
-
 }
+function comparison(a) {
+  if (a == 15) {
+    document.write(a);
+    return
+  } document.write(a++ + "<br>");
+  comparison(a);
+}
+comparison(5);
 
 function summ(a, b) {
   return a + b;
@@ -55,23 +62,24 @@ function multiplication(a, b) {
   return a * b;
 }
 function division(a, b) {
-  if (b <= 0) {
-    return String = 'на ноль делить нельзя';
-  } return a / b;
+  if (!b == 0) {
+    return a / b;
+  } return String = 'на ноль делить нельзя';
 }
 function mathOperation(arg1, arg2, operation) {
   switch (operation) {
-    case "+": result = (summ(arg1, arg2));
-      return result;
-    case "-": result = (sub(arg1, arg2));
-      return result;
-    case "*": result = (multiplication(arg1, arg2));
-      return result;
-    case "/": result = (division(arg1, arg2));
-      return result;
+    case "+": return summ(arg1, arg2);
+
+    case "-": return sub(arg1, arg2);
+
+    case "*": return multiplication(arg1, arg2);
+
+    case "/": return division(arg1, arg2);
+
     default: return String = "неверно задан знак операции";
   }
 }
-console.log(mathOperation(10, 30, "/"));
+console.log(mathOperation(10, 0, "/"));
 
+console.log(division(10, 0));
 
