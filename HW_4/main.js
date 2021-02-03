@@ -36,3 +36,19 @@ function conversion(item) {
 conversion(resNumber);
 console.log(result);
 
+function conversion2(item) {
+  if (item > 999) {
+    console.log("Большое число");
+    return result = {}
+  }
+  else {
+    array = String(item).split('').reverse();
+    return result = {
+      hundreds: array[2],
+      tens: array[1],
+      units: array[0]
+    }
+  }
+}
+conversion2(resNumber);
+console.log(result);
