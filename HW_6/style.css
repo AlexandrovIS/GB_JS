@@ -1,0 +1,35 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.wrapper{
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.small_img {
+  display: flex;
+  justify-content: center;
+  gap:20px;
+  margin: 50px 0;
+}
+.small_img_item img{
+  height: 100%;
+}
+.small_img_item__active{
+  box-shadow: 5px 3px 4px 2px  rgba(32, 28, 28, 0.3);
+}
+.big_img{
+  display: flex;
+  justify-content: center;
+}
+.big_img_item img{
+  height: 100%;
+}
+.big_img_item{
+  display: none;
+}
+.big_img_item__active{
+  display: block;
+  height: 600px;
+}
