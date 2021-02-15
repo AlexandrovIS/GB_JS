@@ -20,44 +20,70 @@ document.querySelector('.big_img_item').classList.add('big_img_item__active');
 */
 
 //2 вариант, все тоже самое, толька про тоггал ссылки, а не от ремувил 
-document.querySelectorAll('.small_img_item').forEach((item) =>
-  item.addEventListener('click', function (event) {
-    const id = event.target.getAttribute('data-item');
-    console.log(id);
-    document.querySelectorAll('.small_img_item__active').forEach((child) => child.classList.toggle('small_img_item__active'));
 
-    document.querySelectorAll('.big_img_item__active').forEach((child) =>
-      child.classList.toggle('big_img_item__active'));
-
-    item.classList.add('small_img_item__active');
-
-    document.getElementById(id).classList.add('big_img_item__active');
-
-  })
-);
-document.querySelector('.small_img_item').classList.add('small_img_item__active')//если я с руки прописываю класс актив по умолчанию для первого же попавшегося селектора, то код не дает ошибку. в первом случае с автокликом падает ошибка.
-document.querySelector('.big_img_item').classList.add('big_img_item__active');
-
-//с  кнопками пока что в ступоре=(( 
-
-// document.querySelectorAll('.my_button').forEach((item) =>
+// document.querySelectorAll('.small_img img').forEach((item) =>
 //   item.addEventListener('click', function (event) {
-//     const button = event.target.getAttribute('data-button');
-//     if (button == "prev") {
-//       let v = document.querySelectorAll('.big_img_item');
-//       console.log(v);
-//       v.forEach(item => {
-//         item.classList.remove('big_img_item__active');
+//     const id = event.target.getAttribute('data-item');
 
-//       });
-//       // let v = (document.querySelector('.big_img_item__active').id);
-//       // console.log(v);
-//     }
-//     else if (button == "next") {
-//       document.querySelector('.big_img_item__active').classList.toggle('new2');
-//     }
+//     document.querySelectorAll('.small_img_item__active').forEach((child) => child.classList.toggle('small_img_item__active'));
 
+//     document.querySelectorAll('.big_img_item__active').forEach((child) =>
+//       child.classList.toggle('big_img_item__active'));
 
+//     item.classList.add('small_img_item__active');
+
+//     document.getElementById(id).classList.add('big_img_item__active');
 
 //   })
 // );
+// document.querySelector('.small_img img').classList.add('small_img_item__active')
+// document.querySelector('.big_img div').classList.add('big_img_item__active');
+
+
+// document.querySelectorAll('.my_button').forEach((item) =>
+//   item.addEventListener('click', function (event) {
+
+
+//     // const button = event.target.getAttribute('data-button');
+//     // if (button == "prev") {}
+//     // else if (button == "next") {}
+//     // console.log(document.querySelector('.big_img_item__active').style.display = "none");
+//   })
+// );
+var indexSlide;
+document.querySelectorAll('.my_button').forEach((item) =>
+  item.addEventListener('click', function (event) {
+    const button = event.target.getAttribute('data-button');
+    if (button == "prev") {
+      if (Number(indexSlide) - 1 < 1) {
+        showSlide(document.querySelectorAll('.big_img img').length - 1)
+      } else showSlide(Number(indexSlide) - 1)
+    }
+    else if (button == "next") {
+      if (Number(indexSlide) - 1 >= document.querySelectorAll('.big_img img').length - 1) {
+        showSlide(1)
+      }
+      else showSlide(Number(indexSlide) + 1)
+    }
+
+  }));
+
+function showSlide(index) {
+  sliders = document.querySelectorAll('.big_img img')
+  sliders.forEach((child) => child.style.display = "none")
+
+  sliders[index - 1].style.display = "block"
+  indexSlide = sliders[index - 1].getAttribute('id')
+}
+
+// 3-й вариант с обращением к id самих фото, без активного класса
+document.querySelectorAll('.small_img img').forEach((item) =>
+  item.addEventListener('click', function (event) {
+    const id = event.target.getAttribute('data-item');
+    document.querySelectorAll('.small_img_item__active').forEach((child) => child.classList.toggle('small_img_item__active'));
+    item.classList.add('small_img_item__active');
+    showSlide(id);
+  })
+);
+
+document.querySelector('.small_img img').click();
