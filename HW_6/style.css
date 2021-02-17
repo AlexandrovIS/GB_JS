@@ -53,3 +53,19 @@
   display: block;
 } */
 
+.product_box{
+  display: flex;
+  justify-content: center;
+  gap:20px;
+}
+.product_box img{
+  max-width: 100px;
+}
+.bin {
+  display: inline-block;
+  margin-top:50px ;
+  background-color: rgb(201, 203, 206);
+}
+.bin p{
+  display: inline-block;
+}
