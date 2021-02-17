@@ -3,6 +3,9 @@ var goodsArray = [];
 
 //шаблон для создания товаров
 function Product(id, name, picture, descriptions, quantity, cost) {
+  if (!new.target) {
+    return new Product(id, name, picture, descriptions, quantity, cost);
+  }
   this.id = id,
     this.name = name,
     this.picture = picture,
@@ -48,9 +51,9 @@ function createToWeb(array) {
 
 //создаем всячие товары разные товары по шаблону "Продукт" сразу в массиве
 goodsArray = [
-  car1 = new Product("01", "bmw", "IMG/IMG_02_s.jpg", "great cars red", 10, 1300),
-  car2 = new Product("02", "audi", "IMG/IMG_02_s.jpg", "so so cars yellow", 20, 1200),
-  car3 = new Product("03", "mercedes", "IMG/IMG_02_s.jpg", "black", 10, 1500),
+  car1 = Product("01", "bmw", "IMG/IMG_02_s.jpg", "great cars red", 10, 1300),
+  car2 = Product("02", "audi", "IMG/IMG_02_s.jpg", "so so cars yellow", 20, 1200),
+  car3 = Product("03", "mercedes", "IMG/IMG_02_s.jpg", "black", 10, 1500),
   car4 = new Product("04", "Name", "IMG/IMG_02_s.jpg", "desc", 10, 2000),
 ]
 //создаем для примера еще один товар вне массива
