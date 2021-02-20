@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    var users = [
+      {
+        login: "admin",
+        password: "12345"
+      },
+      {
+        login: "user",
+        password: "123"
+      }
+    ];
+
+    function User(login, pass) {
+      this.login = login;
+      this.pass = pass;
+      this.access = false;
+      this.show = function () {
+        if (this.check()) console.log("open")
+        else alert("Uncorrect")
+      }
+      this.check = function () {
+        for (var item of users) {
+          if (item.login == login && item.password == pass) {
+            return this.access = true;
+          }
+        }
+      }
+    }
+    function run() {
+      var log = prompt("input your login")
+      var pas = prompt('enter your password')
+      var user1 = new User(log, pas);
+      user1.show();
+    }
+    // run();
+
+
+    //замыкание
+
+    // function createCounter() {
+    //   var x = 10;
+    //   return function () { return ++x }
+    // }
+    // var f = createCounter();
+    // console.log(f()); console.log(f()); console.log(f());
+    // console.log(createCounter()())
+    // console.log(createCounter()())
+
+    // var welcom = function (fio) {
+    //   return function () {
+    //     console.log("Hi " + fio)
+    //   }
+    // }
+    // var SayHi = welcom("Name_1")
+    // var tellHi = welcom("Name_2")
+    // SayHi();
+    // tellHi();
+    // SayHi = welcom("name_3")
+    // SayHi();
+
+    // var c = 0;
+    // function f1() {
+    //   return function () {
+    //     return function () {
+    //       return ++c
+    //     }
+    //   }
+    // }
+    // console.log(f1()()())
+    // console.log(f1()()())
+    // console.log(f1()()())
+
+    // стрелочные функции
+    // const f = (a, b) => a + b
+    // console.log(f(1, 2))
+
+    //
+    // function sum() {
+    //   console.log(arguments)
+    //   var s=0;
+    //   for(var otem of arguments){
+    //     s+=item;
+    //   }
+    //   console.log(s)
+    // }
+    // sum(1, 2, 3, 4, 5)
+
+    //свойства функци
+    // function info(profession) {
+    //   console.log(this.fio + " profession " + profession)
+    // }
+    // var user = {
+    //   fio: "Name_1",
+    //   profession: "XXX",
+    // }
+    // info("doctor")
+    // info.call(user, "programist")
+    // info.apply(user,[1,2,3,4])
+
+
+
+    //Одалживание
+    // var commonShow = function () {
+    //   console.log("Book " + this.title)
+    // }
+
+    // var book1 = { title: "Book_1_Name", show: commonShow };
+    // var book2 = { title: "Book_2_Name", show: console.log("--") };
+    // book1.show();
+    // book1.show.call(book2)
+
+  </script>
+</body>
+
+</html>
